@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  cinex:
+    container_name: cinex
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '2222:2222'
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+
+
+      
